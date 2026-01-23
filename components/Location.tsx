@@ -31,7 +31,7 @@ export default function Location() {
                 <br />
                 Edificio Centro
               </h3>
-              <p className="text-muted-foreground mt-2">Caracas, Venezuela</p>
+              <p className="text-muted-foreground mt-2">San Francisco, Zulia, Venezuela</p>
             </div>
 
             {/* Phone */}

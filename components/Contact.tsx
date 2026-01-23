@@ -16,7 +16,7 @@ export default function Contact() {
               Por WhatsApp
             </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Envía tu pedido directo a nuestro WhatsApp. Nos encanta hablar con nuestros clientes.
+              Envía tu pedido directo a nuestro WhatsApp. Haz clic en el botón de abajo para iniciar la conversación.
             </p>
             <a
               href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
@@ -38,7 +38,7 @@ export default function Contact() {
               {/* Pago Móvil */}
               <div className="border-l-2 border-primary pl-4">
                 <h4 className="font-bold text-foreground mb-1">Pago Móvil</h4>
-                <p className="text-xs text-muted-foreground mb-1">Banco: Banco del Orinoco</p>
+                <p className="text-xs text-muted-foreground mb-1">Banco: Mercantil</p>
                 <p className="text-xs text-muted-foreground mb-1">Teléfono: 0412-1234567</p>
                 <p className="text-xs text-muted-foreground">Cédula: V-12345678</p>
               </div>
@@ -52,7 +52,7 @@ export default function Contact() {
             </div>
 
             <p className="text-xs text-muted-foreground mt-8 pt-6 border-t border-primary/20">
-              Confirma tu pedido por WhatsApp con comprobante de pago
+              Consulta la disponibilidad de tu pedido vía WhatsApp antes de realizar el pago.
             </p>
           </div>
         </div>

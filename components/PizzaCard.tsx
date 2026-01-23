@@ -1,11 +1,10 @@
 export interface PizzaCardProps {
   name: string;
   description: string;
-  priceVES: number;
-  priceUSD: number | null;
+  priceUSD: number;
 }
 
-export default function PizzaCard({ name, description, priceVES, priceUSD }: PizzaCardProps) {
+export default function PizzaCard({ name, description, priceUSD }: PizzaCardProps) {
   return (
     <div className="group flex gap-4 py-4 border-b border-border hover:bg-muted/30 px-4 -mx-4 transition-colors duration-200 cursor-pointer">
       <div className="flex-shrink-0 w-24 h-24 bg-muted border border-border flex items-center justify-center">
@@ -23,19 +22,8 @@ export default function PizzaCard({ name, description, priceVES, priceUSD }: Piz
         </p>
 
         <div className="flex items-center gap-4 mt-3">
-          <div className="flex items-baseline gap-1">
-            <span className="text-xl font-bold text-secondary">
-              {(priceVES / 1000).toFixed(0)}K
-            </span>
-            <span className="text-xs text-muted-foreground">VES</span>
-            {priceUSD && (
-              <>
-                <span className="text-muted-foreground mx-1">·</span>
-                <span className="text-sm text-muted-foreground">
-                  ${priceUSD.toFixed(2)}
-                </span>
-              </>
-            )}
+          <div className="text-xl font-bold text-secondary">
+            ${priceUSD.toFixed(2)}
           </div>
         </div>
       </div>

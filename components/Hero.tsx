@@ -26,9 +26,9 @@ export default function Hero() {
       {/* Contenido */}
       <div className="relative z-10 text-center px-4 max-w-4xl">
         <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight text-white">
-          La mejor
+          Las Pizzas
           <br />
-          <span className="text-secondary">Pizza</span>
+          <span className="text-secondary">Más Variadas</span>
           <br />
           del Zulia
         </h2>

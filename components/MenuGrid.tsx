@@ -1,74 +1,157 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import PizzaCard from './PizzaCard';
 
 interface Pizza {
   id: number;
   name: string;
-  description: string;
-  priceVES: number;
+  description?: string;
+  priceUSD: number;
+  section: string; // Nueva propiedad para dividir secciones
 }
 
 const pizzas: Pizza[] = [
+  // Sección: Pizzas Gourmet
   {
     id: 1,
-    name: 'Margherita Pura',
-    description: 'Tomate, mozzarella fresca, albahaca y aceite de oliva premium',
-    priceVES: 25000,
+    name: 'Pizza de la casa',
+    description: 'Salchichón, jalapeños, peperoni, aceitunas negras, tomates secos, cebolla caramelizada, pesto y queso mozzarella extra',
+    priceUSD: 10,
+    section: 'Gourmet',
   },
   {
     id: 2,
-    name: 'Pepperoni Fuego',
-    description: 'Salsa de tomate, mozzarella y pepperoni artesanal',
-    priceVES: 30000,
+    name: 'La Italiana',
+    description: 'Salsa boloñesa de la casa, peperoni, tomate seco, parmesano',
+    priceUSD: 9,
+    section: 'Gourmet',
   },
   {
     id: 3,
-    name: 'Cuatro Quesos',
-    description: 'Mozzarella, parmesano, gorgonzola y queso azul',
-    priceVES: 35000,
+    name: 'Carbonara',
+    description: 'Salsa carbonara especial de la casa, tocineta, tomate seco, maíz',
+    priceUSD: 9,
+    section: 'Gourmet',
   },
   {
     id: 4,
-    name: 'Verde Huerto',
-    description: 'Champiñones, pimientos, cebolla, tomate y aceitunas',
-    priceVES: 28000,
+    name: 'La Llanera',
+    description: 'Carne mechada; cebolla, pimentón y maíz salteados; maduro',
+    priceUSD: 9,
+    section: 'Gourmet',
   },
   {
     id: 5,
-    name: 'La Carnicera',
-    description: 'Pepperoni, jamón, salchicha y bacon crujiente',
-    priceVES: 38000,
+    name: 'La Mediterránea',
+    description: 'Carne sazonada al estilo mediterráneo, champiñones, tocineta, cebolla en grillé, queso holandés y parmesano',
+    priceUSD: 9,
+    section: 'Gourmet',
   },
   {
     id: 6,
-    name: 'BBQ Especial',
-    description: 'Pollo BBQ, cebolla roja, cilantro y mozzarella',
-    priceVES: 32000,
+    name: 'La Española',
+    description: 'Chorizo español, peperoni, lomo ahumado, pimentón, tomate seco, aceitunas negras',
+    priceUSD: 9,
+    section: 'Gourmet',
+  },
+  {
+    id: 7,
+    name: 'La Mexicana',
+    description: 'Carne molida sazonada al estilo mexicano, guacamole, pico de gallo',
+    priceUSD: 9,
+    section: 'Gourmet',
+  },
+  {
+    id: 8,
+    name: 'Miel Mostaza',
+    description: 'Miel mostaza de la casa, pollo asado en juliana, tocineta en grillé',
+    priceUSD: 9,
+    section: 'Gourmet',
+  },
+  {
+    id: 9,
+    name: '5 Quesos',
+    description: 'Mozarella, holandés, parmesano, queso crema y pecorino',
+    priceUSD: 9,
+    section: 'Gourmet',
+  },
+
+  // Sección: Pizzas Extraordinarias
+  {
+    id: 10,
+    name: 'La Caprichosa',
+    description: 'Maíz, cebolla, pimentón salteado y una proteína a elección',
+    priceUSD: 7,
+    section: 'Extraordinarias',
+  },
+  {
+    id: 11,
+    name: '4 Estaciones',
+    description: '4 secciones con ingredientes al gusto del cliente',
+    priceUSD: 7,
+    section: 'Extraordinarias',
+  },
+  {
+    id: 12,
+    name: 'Pizza de pollo especial',
+    description: 'Pollo y 1 ingrediente al gusto del cliente',
+    priceUSD: 7,
+    section: 'Extraordinarias',
+  },
+
+  // Sección: Pizzas Clásicas
+  {
+    id: 13,
+    name: 'Jamón',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 14,
+    name: 'Tocineta',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 15,
+    name: 'Peperoni',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 16,
+    name: 'Maíz',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 17,
+    name: 'Pimentón',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 18,
+    name: 'Maduro',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 19,
+    name: 'Aceitunas negras',
+    priceUSD: 6,
+    section: 'Clásicas',
+  },
+  {
+    id: 20,
+    name: 'Pollo',
+    priceUSD: 6,
+    section: 'Clásicas',
   },
 ];
 
 export default function MenuGrid() {
-  const [exchangeRate, setExchangeRate] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchExchangeRate = async () => {
-      try {
-        const response = await fetch('https://api.exchangerate-api.com/v4/latest/VES');
-        const data = await response.json();
-        setExchangeRate(data.rates.USD);
-      } catch (error) {
-        console.error('Error fetching exchange rate:', error);
-        setExchangeRate(0.000025);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchExchangeRate();
-  }, []);
+  let currentSection = '';
 
   return (
     <section id="menu" className="py-16 md:py-24 bg-background">
@@ -78,22 +161,24 @@ export default function MenuGrid() {
           <p className="text-muted-foreground">Pizzas artesanales preparadas con ingredientes premium</p>
         </div>
 
-        {loading && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">Cargando tasas de cambio...</p>
-          </div>
-        )}
+        <div className="space-y-6">
+          {pizzas.map((pizza) => {
+            const showSection = pizza.section !== currentSection;
+            currentSection = pizza.section;
 
-        <div className="space-y-4">
-          {pizzas.map((pizza) => (
-            <PizzaCard
-              key={pizza.id}
-              name={pizza.name}
-              description={pizza.description}
-              priceVES={pizza.priceVES}
-              priceUSD={exchangeRate ? pizza.priceVES * exchangeRate : null}
-            />
-          ))}
+            return (
+              <div key={pizza.id}>
+                {showSection && (
+                  <h3 className="text-2xl font-bold text-primary mb-2 mt-6">{pizza.section}</h3>
+                )}
+                <PizzaCard
+                  name={pizza.name}
+                  description={pizza.description ?? ''}
+                  priceUSD={pizza.priceUSD}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
