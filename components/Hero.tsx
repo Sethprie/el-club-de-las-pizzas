@@ -1,60 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playVideo, setPlayVideo] = useState(false);
-
-  useEffect(() => {
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-    // Si no es móvil, forzamos video
-    if (!isMobile) {
-      setPlayVideo(true);
-      return;
-    }
-
-    // Para móviles: medir FPS inicial de video
-    const video = videoRef.current;
-    if (!video) return;
-
-    let frames = 0;
-    let start: number | null = null;
-    const checkFPS = (timestamp: number) => {
-      if (!start) start = timestamp;
-      frames++;
-      const elapsed = (timestamp - start) / 1000; // segundos
-      if (elapsed < 0.5) {
-        requestAnimationFrame(checkFPS);
-      } else {
-        const fps = frames / elapsed;
-        // Si FPS decente (>20), reproducir video
-        if (fps > 20) setPlayVideo(true);
-      }
-    };
-
-    // Cargar primer frame
-    video.play().then(() => {
-      video.pause();
-      requestAnimationFrame(checkFPS);
-    }).catch(() => {
-      // Si falla la reproducción automática, quedamos en primer frame
-      setPlayVideo(false);
-    });
-  }, []);
-
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-primary/20">
-      {/* Video */}
+      
+      {/* Video background */}
       <video
-        ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover scale-105"
         src="/pizza-stock.mp4"
+        autoPlay
+        loop
         muted
         playsInline
-        loop={playVideo}
-        autoPlay={playVideo}
         preload="metadata"
       />
 
