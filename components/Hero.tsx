@@ -1,20 +1,64 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playVideo, setPlayVideo] = useState(false);
+
+  useEffect(() => {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    // Si no es móvil, forzamos video
+    if (!isMobile) {
+      setPlayVideo(true);
+      return;
+    }
+
+    // Para móviles: medir FPS inicial de video
+    const video = videoRef.current;
+    if (!video) return;
+
+    let frames = 0;
+    let start: number | null = null;
+    const checkFPS = (timestamp: number) => {
+      if (!start) start = timestamp;
+      frames++;
+      const elapsed = (timestamp - start) / 1000; // segundos
+      if (elapsed < 0.5) {
+        requestAnimationFrame(checkFPS);
+      } else {
+        const fps = frames / elapsed;
+        // Si FPS decente (>20), reproducir video
+        if (fps > 20) setPlayVideo(true);
+      }
+    };
+
+    // Cargar primer frame
+    video.play().then(() => {
+      video.pause();
+      requestAnimationFrame(checkFPS);
+    }).catch(() => {
+      // Si falla la reproducción automática, quedamos en primer frame
+      setPlayVideo(false);
+    });
+  }, []);
+
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-primary/20">
-      
-      {/* Video background */}
+      {/* Video */}
       <video
+        ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover scale-105"
         src="/pizza-stock.mp4"
-        autoPlay
-        loop
         muted
         playsInline
+        loop={playVideo}
+        autoPlay={playVideo}
+        preload="metadata"
       />
 
-      {/* Overlay cálido con gradiente */}
+      {/* Overlay cálido */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
 
       {/* Glows decorativos */}
@@ -42,35 +86,19 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#menu"
-            className="
-              px-10 py-4 rounded-lg
-              bg-primary text-primary-foreground
-              font-bold text-lg
-              shadow-[0_10px_40px_rgba(255,60,0,0.35)]
-              hover:translate-y-[-2px] hover:shadow-[0_20px_60px_rgba(255,60,0,0.45)]
-              transition-all duration-300
-            "
+            className="px-10 py-4 rounded-lg bg-primary text-primary-foreground font-bold text-lg shadow-[0_10px_40px_rgba(255,60,0,0.35)] hover:translate-y-[-2px] hover:shadow-[0_20px_60px_rgba(255,60,0,0.45)] transition-all duration-300"
           >
             Ver Menú
           </a>
 
           <a
             href="#contact"
-            className="
-              px-10 py-4 rounded-lg
-              bg-white/10 text-white
-              font-bold text-lg
-              backdrop-blur-md
-              border border-white/20
-              hover:bg-white/20 hover:translate-y-[-2px]
-              transition-all duration-300
-            "
+            className="px-10 py-4 rounded-lg bg-white/10 text-white font-bold text-lg backdrop-blur-md border border-white/20 hover:bg-white/20 hover:translate-y-[-2px] transition-all duration-300"
           >
             Ordenar Ahora
           </a>
         </div>
 
-        {/* Detalle sutil */}
         <div className="mt-14 flex justify-center">
           <div className="w-24 h-[2px] bg-primary/60 rounded-full" />
         </div>
