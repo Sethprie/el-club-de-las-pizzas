@@ -1,12 +1,26 @@
-# TODO: Implementar imágenes clickeables en pizzas y remover hover effects
+# Refactorización de Componentes del Menú
 
 ## Tareas Pendientes
-- [ ] Agregar propiedad 'image' a la interfaz Pizza y a cada objeto pizza en MenuGrid.tsx con URLs genéricas de Unsplash
-- [ ] Actualizar PizzaCardProps para incluir image: string
-- [ ] Modificar PizzaCard.tsx para mostrar la imagen en lugar del placeholder, hacerla clickeable para abrir la imagen
-- [ ] Remover efectos hover de PizzaCard: clases group hover:bg-muted/30 y group-hover:text-primary
-- [ ] Probar los cambios en el navegador
+- [ ] Eliminar Menu.tsx (no se usa en el proyecto)
+- [ ] Refactorizar MenuGrid.tsx: Simplificar lógica de secciones, eliminar código innecesario
+- [ ] Refactorizar PizzaCard.tsx: Limpiar código no utilizado, asegurar simplicidad
 
-## Notas
-- Usar imágenes genéricas de pizza de Unsplash para cada pizza.
-- Las imágenes se abrirán en una nueva pestaña al hacer click.
+## Información Recopilada
+- Menu.tsx no se importa en ningún lugar; solo MenuGrid.tsx se usa en app/page.tsx.
+- MenuGrid.tsx maneja pizzas en secciones (Gourmet, Extraordinarias, Clásicas) con lógica compleja que puede simplificarse.
+- PizzaCard.tsx es relativamente limpio, pero verificar estado y modal innecesarios.
+- No se encontró lógica de conversión monetaria; precios están en USD directo.
+
+## Plan de Edición
+- Eliminar Menu.tsx completamente.
+- En MenuGrid.tsx: Agrupar pizzas por sección usando un objeto, simplificar renderizado.
+- En PizzaCard.tsx: Mantener funcionalidad esencial, eliminar cualquier código muerto.
+
+## Archivos Dependientes
+- app/page.tsx (usa MenuGrid.tsx)
+- components/MenuGrid.tsx
+- components/PizzaCard.tsx
+
+## Pasos de Seguimiento
+- Verificar que el proyecto compile después de cambios.
+- Probar funcionalidad del menú.

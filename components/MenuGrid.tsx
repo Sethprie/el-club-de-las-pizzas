@@ -8,7 +8,7 @@ interface Pizza {
   name: string;
   description?: string;
   priceUSD: number;
-  section: string; // Nueva propiedad para dividir secciones
+  section: string;
   image?: string;
 }
 
@@ -155,8 +155,18 @@ const pizzas: Pizza[] = [
   },
 ];
 
+const sectionIcons = {
+  Gourmet: Crown,
+  Extraordinarias: Star,
+  Clásicas: ChefHat,
+};
+
 export default function MenuGrid() {
-  let currentSection = '';
+  const groupedPizzas = pizzas.reduce((acc, pizza) => {
+    if (!acc[pizza.section]) acc[pizza.section] = [];
+    acc[pizza.section].push(pizza);
+    return acc;
+  }, {} as Record<string, Pizza[]>);
 
   return (
     <section id="menu" className="py-16 md:py-24 bg-background">
@@ -167,38 +177,33 @@ export default function MenuGrid() {
         </div>
 
         <div className="space-y-6">
-          {pizzas.map((pizza) => {
-            const showSection = pizza.section !== currentSection;
-            currentSection = pizza.section;
-
+          {Object.entries(groupedPizzas).map(([section, sectionPizzas]) => {
+            const Icon = sectionIcons[section as keyof typeof sectionIcons];
             return (
-              <div key={pizza.id}>
-                {showSection && (
-                  <div className="flex items-center gap-3 mb-2 mt-6">
-                    {pizza.section === 'Gourmet' && <Crown className="w-8 h-8 text-primary" />}
-                    {pizza.section === 'Extraordinarias' && <Star className="w-8 h-8 text-primary" />}
-                    {pizza.section === 'Clásicas' && <ChefHat className="w-8 h-8 text-primary" />}
-                    <h3 className="text-2xl font-bold text-primary">{pizza.section}</h3>
+              <div key={section}>
+                <div className="flex items-center gap-3 mb-4 mt-6">
+                  <Icon className="w-8 h-8 text-primary" />
+                  <h3 className="text-2xl font-bold text-primary">{section}</h3>
+                </div>
+                {section === 'Clásicas' ? (
+                  <div className="border border-border rounded-lg p-6 bg-card">
+                    <p className="text-foreground text-lg">
+                      Todas las pizzas clásicas valen <span className="font-bold text-primary">$6 USD</span>
+                    </p>
+                    <p className="text-muted-foreground mt-2">
+                      Pizzas de ingredientes comunes como: Jamón, Tocineta, Peperoni, Maíz, Pimentón, Maduro, Aceitunas negras, Pollo
+                    </p>
                   </div>
-                )}
-                {pizza.section === 'Clásicas' ? (
-                  showSection && (
-                    <div className="border border-border rounded-lg p-6 bg-card">
-                      <p className="text-foreground text-lg">
-                        Todas las pizzas clásicas valen <span className="font-bold text-primary">$6 USD</span>
-                      </p>
-                      <p className="text-muted-foreground mt-2">
-                        Pizzas de ingredientes comunes como: Jamón, Tocineta, Peperoni, Maíz, Pimentón, Maduro, Aceitunas negras, Pollo
-                      </p>
-                    </div>
-                  )
                 ) : (
-                  <PizzaCard
-                    name={pizza.name}
-                    description={pizza.description ?? ''}
-                    priceUSD={pizza.priceUSD}
-                    image={pizza.image}
-                  />
+                  sectionPizzas.map((pizza) => (
+                    <PizzaCard
+                      key={pizza.id}
+                      name={pizza.name}
+                      description={pizza.description ?? ''}
+                      priceUSD={pizza.priceUSD}
+                      image={pizza.image}
+                    />
+                  ))
                 )}
               </div>
             );

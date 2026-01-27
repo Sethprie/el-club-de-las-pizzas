@@ -1,10 +1,26 @@
 'use client';
 
-import { MessageCircle, CreditCard } from 'lucide-react';
+import { MessageCircle, CreditCard, Copy } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
   const whatsappMessage = encodeURIComponent('¡Hola! Quisiera hacer un pedido de pizza');
-  const whatsappNumber = '584121234567';
+  const whatsappNumber = '584122557840';
+
+  const pagoMovilData = `Mercantil
+04122557840
+15985792`;
+
+  const zelleData = `javierjprietop2@gmail.com
+Javier Prieto`;
+
+  const [copied, setCopied] = useState<{ [key: string]: boolean }>({});
+
+  const handleCopy = (key: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied({ ...copied, [key]: true });
+    setTimeout(() => setCopied({ ...copied, [key]: false }), 2000);
+  };
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-background border-t border-border">
@@ -44,18 +60,34 @@ export default function Contact() {
 
             <div className="space-y-6">
               {/* Pago Móvil */}
-              <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold text-foreground mb-1">Pago Móvil</h4>
-                <p className="text-xs text-muted-foreground mb-1">Banco: Mercantil</p>
-                <p className="text-xs text-muted-foreground mb-1">Teléfono: 0412-1234567</p>
-                <p className="text-xs text-muted-foreground">Cédula: V-12345678</p>
+              <div className="border-l-2 border-primary pl-4 relative">
+                <h4 className="font-bold text-foreground mb-2">Pago Móvil</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                  Mercantil<br />
+                  0412-2557840<br />
+                  15985792
+                </p>
+                <button
+                  onClick={() => handleCopy('pagoMovil', pagoMovilData)}
+                  className="flex items-center gap-2 bg-primary text-background px-3 py-1 rounded text-xs font-bold hover:bg-primary/90 transition-all duration-200"
+                >
+                  <Copy className="w-4 h-4" /> {copied['pagoMovil'] ? 'Copiado!' : 'Copiar'}
+                </button>
               </div>
 
               {/* Zelle */}
-              <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold text-foreground mb-1">Zelle (USD)</h4>
-                <p className="text-xs text-muted-foreground mb-1">Email: pizzeria@email.com</p>
-                <p className="text-xs text-muted-foreground">Transferencias internacionales</p>
+              <div className="border-l-2 border-primary pl-4 relative">
+                <h4 className="font-bold text-foreground mb-2">Zelle (USD)</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                  javierjprietop2@gmail.com<br />
+                  Javier Prieto
+                </p>
+                <button
+                  onClick={() => handleCopy('zelle', zelleData)}
+                  className="flex items-center gap-2 bg-secondary text-background px-3 py-1 rounded text-xs font-bold hover:bg-secondary/90 transition-all duration-200"
+                >
+                  <Copy className="w-4 h-4" /> {copied['zelle'] ? 'Copiado!' : 'Copiar'}
+                </button>
               </div>
             </div>
 
