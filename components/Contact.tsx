@@ -1,5 +1,7 @@
 'use client';
 
+import { MessageCircle, CreditCard } from 'lucide-react';
+
 export default function Contact() {
   const whatsappMessage = encodeURIComponent('¡Hola! Quisiera hacer un pedido de pizza');
   const whatsappNumber = '584121234567';
@@ -12,9 +14,12 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* WhatsApp Section */}
           <div className="border-l-4 border-primary pl-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Por WhatsApp
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <MessageCircle className="w-8 h-8 text-primary" />
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                Por WhatsApp
+              </h3>
+            </div>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Envía tu pedido directo a nuestro WhatsApp. Haz clic en el botón de abajo para iniciar la conversación.
             </p>
@@ -30,9 +35,12 @@ export default function Contact() {
 
           {/* Payment Methods Section */}
           <div className="border-l-4 border-secondary pl-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Métodos de Pago
-            </h3>
+            <div className="flex items-center gap-3 mb-6">
+              <CreditCard className="w-8 h-8 text-secondary" />
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                Métodos de Pago
+              </h3>
+            </div>
 
             <div className="space-y-6">
               {/* Pago Móvil */}

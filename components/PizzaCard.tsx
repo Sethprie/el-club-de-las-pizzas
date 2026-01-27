@@ -1,20 +1,36 @@
+'use client';
+
+import { useState } from 'react';
+import { Pizza } from 'lucide-react';
+
 export interface PizzaCardProps {
   name: string;
   description: string;
   priceUSD: number;
+  image?: string;
 }
 
-export default function PizzaCard({ name, description, priceUSD }: PizzaCardProps) {
+export default function PizzaCard({ name, description, priceUSD, image }: PizzaCardProps) {
+  const [showModal, setShowModal] = useState(false);
   return (
-    <div className="group flex gap-4 py-4 border-b border-border hover:bg-muted/30 px-4 -mx-4 transition-colors duration-200 cursor-pointer">
+    <div className="flex gap-4 py-4 border-b border-border px-4 -mx-4">
       <div className="flex-shrink-0 w-24 h-24 bg-muted border border-border flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-3xl font-bold text-secondary">P</div>
-        </div>
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover cursor-pointer"
+            onClick={() => setShowModal(true)}
+          />
+        ) : (
+          <div className="text-center">
+            <Pizza className="w-8 h-8 text-secondary" />
+          </div>
+        )}
       </div>
 
       <div className="flex-1 min-w-0">
-        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-semibold text-foreground">
           {name}
         </h3>
         <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
@@ -34,6 +50,20 @@ export default function PizzaCard({ name, description, priceUSD }: PizzaCardProp
       >
         Ordenar
       </a>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setShowModal(false)}>
+          <div className="relative max-w-4xl max-h-full p-4">
+            <button
+              className="absolute top-2 right-2 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold"
+              onClick={() => setShowModal(false)}
+            >
+              ×
+            </button>
+            <img src={image} alt={name} className="max-w-full max-h-full object-contain" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

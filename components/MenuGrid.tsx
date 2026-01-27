@@ -1,6 +1,7 @@
 'use client';
 
 import PizzaCard from './PizzaCard';
+import { ChefHat, Crown, Star } from 'lucide-react';
 
 interface Pizza {
   id: number;
@@ -8,6 +9,7 @@ interface Pizza {
   description?: string;
   priceUSD: number;
   section: string; // Nueva propiedad para dividir secciones
+  image?: string;
 }
 
 const pizzas: Pizza[] = [
@@ -18,6 +20,7 @@ const pizzas: Pizza[] = [
     description: 'Salchichón, jalapeños, peperoni, aceitunas negras, tomates secos, cebolla caramelizada, pesto y queso mozzarella extra',
     priceUSD: 10,
     section: 'Gourmet',
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=400&fit=crop',
   },
   {
     id: 2,
@@ -25,6 +28,7 @@ const pizzas: Pizza[] = [
     description: 'Salsa boloñesa de la casa, peperoni, tomate seco, parmesano',
     priceUSD: 9,
     section: 'Gourmet',
+    image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=400&fit=crop',
   },
   {
     id: 3,
@@ -32,6 +36,7 @@ const pizzas: Pizza[] = [
     description: 'Salsa carbonara especial de la casa, tocineta, tomate seco, maíz',
     priceUSD: 9,
     section: 'Gourmet',
+    image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400&h=400&fit=crop',
   },
   {
     id: 4,
@@ -169,13 +174,32 @@ export default function MenuGrid() {
             return (
               <div key={pizza.id}>
                 {showSection && (
-                  <h3 className="text-2xl font-bold text-primary mb-2 mt-6">{pizza.section}</h3>
+                  <div className="flex items-center gap-3 mb-2 mt-6">
+                    {pizza.section === 'Gourmet' && <Crown className="w-8 h-8 text-primary" />}
+                    {pizza.section === 'Extraordinarias' && <Star className="w-8 h-8 text-primary" />}
+                    {pizza.section === 'Clásicas' && <ChefHat className="w-8 h-8 text-primary" />}
+                    <h3 className="text-2xl font-bold text-primary">{pizza.section}</h3>
+                  </div>
                 )}
-                <PizzaCard
-                  name={pizza.name}
-                  description={pizza.description ?? ''}
-                  priceUSD={pizza.priceUSD}
-                />
+                {pizza.section === 'Clásicas' ? (
+                  showSection && (
+                    <div className="border border-border rounded-lg p-6 bg-card">
+                      <p className="text-foreground text-lg">
+                        Todas las pizzas clásicas valen <span className="font-bold text-primary">$6 USD</span>
+                      </p>
+                      <p className="text-muted-foreground mt-2">
+                        Pizzas de ingredientes comunes como: Jamón, Tocineta, Peperoni, Maíz, Pimentón, Maduro, Aceitunas negras, Pollo
+                      </p>
+                    </div>
+                  )
+                ) : (
+                  <PizzaCard
+                    name={pizza.name}
+                    description={pizza.description ?? ''}
+                    priceUSD={pizza.priceUSD}
+                    image={pizza.image}
+                  />
+                )}
               </div>
             );
           })}

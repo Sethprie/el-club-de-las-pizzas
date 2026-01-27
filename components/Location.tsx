@@ -1,3 +1,5 @@
+import { MapPin, Phone, Clock } from 'lucide-react';
+
 export default function Location() {
   const googleMapsUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.0908863089653!2d-71.28!3d10.06!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e89a1c8b8b8b8bd%3A0x0!2sCaracas%2C%20Venezuela!5e0!3m2!1ses!2sVE!4v1234567890';
 
@@ -25,7 +27,10 @@ export default function Location() {
           <div className="flex flex-col justify-between space-y-8">
             {/* Address */}
             <div className="border-l-2 border-primary pl-6">
-              <p className="text-xs text-secondary font-bold tracking-wider mb-2">DIRECCIÓN</p>
+              <div className="flex items-center gap-2 mb-2">
+                <MapPin className="w-5 h-5 text-primary" />
+                <p className="text-xs text-secondary font-bold tracking-wider">DIRECCIÓN</p>
+              </div>
               <h3 className="text-2xl md:text-3xl font-bold text-foreground">
                 Avenida Principal,
                 <br />
@@ -36,7 +41,10 @@ export default function Location() {
 
             {/* Phone */}
             <div className="border-l-2 border-secondary pl-6">
-              <p className="text-xs text-secondary font-bold tracking-wider mb-2">TELÉFONO</p>
+              <div className="flex items-center gap-2 mb-2">
+                <Phone className="w-5 h-5 text-secondary" />
+                <p className="text-xs text-secondary font-bold tracking-wider">TELÉFONO</p>
+              </div>
               <a href="tel:+584121234567" className="text-2xl md:text-3xl font-bold text-foreground hover:text-primary transition-colors">
                 +58 (412) 123-4567
               </a>
@@ -44,7 +52,10 @@ export default function Location() {
 
             {/* Hours */}
             <div className="border-l-2 border-secondary pl-6">
-              <p className="text-xs text-secondary font-bold tracking-wider mb-4">HORARIO</p>
+              <div className="flex items-center gap-2 mb-4">
+                <Clock className="w-5 h-5 text-secondary" />
+                <p className="text-xs text-secondary font-bold tracking-wider">HORARIO</p>
+              </div>
               <div className="text-foreground space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span>Lun - Jue:</span>
