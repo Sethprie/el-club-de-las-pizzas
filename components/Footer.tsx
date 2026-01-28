@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           {/* Social */}
-          <div>
+          {/* <div>
             <p className="text-xs text-primary font-bold tracking-wider mb-4">SÍGUENOS</p>
             <div className="flex flex-col gap-3">
               <a href="#" className="text-white hover:text-primary transition-colors text-sm font-medium">
@@ -54,7 +54,7 @@ export default function Footer() {
                 Facebook
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* ===== VERSIÓN MÓVIL ===== */}
@@ -94,7 +94,7 @@ export default function Footer() {
             </div>
 
             {/* Social */}
-            <div>
+            {/* <div>
               <p className="text-xs text-primary font-bold tracking-wider mb-4">SÍGUENOS</p>
               <div className="flex flex-col gap-3">
                 <a href="#" className="text-white hover:text-primary transition-colors text-sm font-medium">
@@ -107,7 +107,7 @@ export default function Footer() {
                   Facebook
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
