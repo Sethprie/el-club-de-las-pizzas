@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 
 export default function Header() {
@@ -16,11 +17,21 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-[#0f0f0f] border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
-          <span className="text-primary">El Club de</span>{" "}
-          <span>las Pizzas</span>
-        </h1>
+        
+        {/* Contenedor Logo + Título */}
+        <div className="flex items-center gap-3">
+          <Image 
+            src="/Logo-LineArt_Blanco.png" 
+            alt="Logo El Club de las Pizzas"
+            width={50} // Ajusta el tamaño según necesites
+            height={50}
+            className="object-contain"
+          />
+          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+            <span className="text-primary">El Club de</span>{" "}
+            <span>las Pizzas</span>
+          </h1>
+        </div>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 md:gap-10 text-sm md:text-base font-medium">
