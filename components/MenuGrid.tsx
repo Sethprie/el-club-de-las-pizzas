@@ -204,7 +204,7 @@ export default function MenuGrid() {
                 {section === 'Clásicas' ? (
                   <div className="border border-border rounded-lg p-6 bg-card">
                     <p className="text-foreground text-lg">
-                      Todas las pizzas clásicas valen <span className="font-bold text-primary">$6 USD</span>
+                      Todas las pizzas clásicas valen <span className="font-bold text-primary">$7 USD</span>
                     </p>
                     <p className="text-muted-foreground mt-2">
                       Pizzas de ingredientes comunes como: Jamón, Tocineta, Peperoni, Maíz, Pimentón, Maduro, Aceitunas negras, Pollo
