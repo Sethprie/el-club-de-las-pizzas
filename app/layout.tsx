@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "El Club de las Pizzas",
   description: "Pizzas artesanales en El Club de las Pizzas",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
