@@ -117,6 +117,14 @@ export default function Footer() {
             <p className="text-xs text-muted-foreground">
               &copy; {currentYear} El Club de las Pizzas. Todos los derechos reservados.
             </p>
+            <a
+              href="https://sysmarch.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-primary hover:text-white transition-colors font-medium"
+            >
+              ¿Quieres una web como esta para tu negocio? ¡Contáctanos ya en sysmarch.com!
+            </a>
           </div>
         </div>
       </div>
