@@ -25,11 +25,11 @@ export default function Header() {
         >
           <div className="relative p-2 bg-gradient-to-br from-primary to-secondary rounded-lg shadow-lg">
             <Image 
-              src="/Logo-LineArt_Blanco.png" 
+              src="/pizza-logo.png" 
               alt="Logo El Club de las Pizzas"
               width={40}
               height={40}
-              className="object-contain filter brightness-0 invert"
+              className="object-contain"
             />
           </div>
           <div className="hidden sm:flex flex-col">

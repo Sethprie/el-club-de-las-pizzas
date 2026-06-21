@@ -21,7 +21,7 @@ const pizzas: Pizza[] = [
     description: 'Pizza profunda y jugosa al estilo Chicago con capas de queso, salsa y carnes premium',
     priceUSD: 12,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_01.png',
+    image: '/pizzas/Chicago.jpeg',
   },
   {
     id: 22,
@@ -29,7 +29,7 @@ const pizzas: Pizza[] = [
     description: 'Icónica pizza rectangular de Detroit con queso crujiente en los bordes y salsa clásica',
     priceUSD: 12,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_02.png',
+    image: '/pizzas/Detroit.jpeg',
   },
   {
     id: 1,
@@ -37,7 +37,7 @@ const pizzas: Pizza[] = [
     description: 'Nuestra creación estrella: salchichón, jalapeños, peperoni, aceitunas negras, tomates secos, cebolla caramelizada y mozzarella extra',
     priceUSD: 11,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_01.png',
+    image: '/pizzas/Pizza_de_la_Casa.jpeg',
   },
   {
     id: 2,
@@ -45,7 +45,6 @@ const pizzas: Pizza[] = [
     description: 'Auténtica receta italiana: salsa boloñesa de la casa, peperoni, tomate seco y parmesano rallado',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_02.png',
   },
   {
     id: 3,
@@ -61,7 +60,7 @@ const pizzas: Pizza[] = [
     description: 'Tradición venezolana: carne mechada, cebolla y pimentón salteados, maduro caramelizado',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_01.png',
+    image: '/pizzas/La_Llanera.jpeg',
   },
   {
     id: 5,
@@ -69,7 +68,6 @@ const pizzas: Pizza[] = [
     description: 'Carne sazonada al estilo mediterráneo con champiñones, tocineta, cebolla a la parrilla y dos quesos',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_vegetariana.png',
   },
   {
     id: 6,
@@ -77,7 +75,6 @@ const pizzas: Pizza[] = [
     description: 'Sabores de España: chorizo español, peperoni, lomo ahumado, pimentón, tomate seco y aceitunas',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_02.png',
   },
   {
     id: 7,
@@ -85,7 +82,7 @@ const pizzas: Pizza[] = [
     description: 'Toque mexicano: carne molida sazonada, guacamole fresco, pico de gallo y jalapeños',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_vegetariana.png',
+    image: '/pizzas/Mexicana_Pollo.jpeg',
   },
   {
     id: 8,
@@ -93,7 +90,7 @@ const pizzas: Pizza[] = [
     description: 'Combinación dulce y salada: miel mostaza casera, pollo asado tierno, tocineta crujiente',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_gourmet_01.png',
+    image: '/pizzas/Miel_Mostaza.jpeg',
   },
   {
     id: 9,
@@ -101,7 +98,6 @@ const pizzas: Pizza[] = [
     description: 'Paraíso del queso: mozzarella, holandés, parmesano, queso crema y pecorino italiano',
     priceUSD: 10,
     section: 'Gourmet',
-    image: '/pizzas/pizza_vegetariana.png',
   },
 
   // Sección: Pizzas Extraordinarias
