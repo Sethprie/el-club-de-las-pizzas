@@ -15,68 +15,62 @@ export default function Hero() {
         preload="metadata"
       />
 
-      {/* Premium overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-primary/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+      {/* Overlay mejorado - más luminoso */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
 
-      {/* Animated glows */}
+      {/* Glows decorativos */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 -left-40 w-96 h-96 bg-primary/25 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/3 -right-32 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-primary/15 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-1/3 -left-48 w-[500px] h-[500px] bg-primary/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       </div>
 
       {/* Contenido Premium */}
-      <div className="relative z-10 text-center px-4 max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      <div className="relative z-10 text-center px-4 max-w-5xl">
         {/* Etiqueta superior */}
-        <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-primary/20 border border-primary/40 rounded-full backdrop-blur-sm">
+        <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-primary/30 border border-primary/60 rounded-full backdrop-blur-md">
           <span className="w-2 h-2 bg-primary rounded-full" />
-          <span className="text-sm font-semibold text-primary uppercase tracking-widest">Pizzería Artesanal</span>
+          <span className="text-sm font-bold text-primary uppercase tracking-widest">Pizzería Artesanal</span>
         </div>
 
         {/* Títulos */}
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold mb-8 leading-[1.1] tracking-tight text-balance">
-          <span className="block text-white">Las Pizzas</span>
-          <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">Más Variadas</span>
-          <span className="block text-white/90">del Zulia</span>
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.15] tracking-tight text-balance">
+          <span className="block text-white drop-shadow-lg">Las Pizzas</span>
+          <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-lg">Más Variadas</span>
+          <span className="block text-white/95 drop-shadow-lg">del Zulia</span>
         </h1>
 
         {/* Descripción */}
-        <p className="text-lg md:text-xl text-white/85 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-          Cada pizza es una obra maestra artesanal preparada con ingredientes premium y pasión. 
-          <br className="hidden sm:block" />
-          Descubre combinaciones únicas que celebran la tradición culinaria venezolana.
+        <p className="text-base md:text-lg text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow">
+          Cada pizza es una obra maestra artesanal preparada con ingredientes premium y pasión culinaria. 
+          Descubre las mejores combinaciones que celebran la tradición venezolana.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <a
             href="#menu"
-            className="group relative px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold text-base md:text-lg shadow-[0_20px_60px_rgba(255,60,0,0.4)] hover:shadow-[0_30px_80px_rgba(255,60,0,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-bold text-base shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 drop-shadow-lg"
           >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              Explorar Menú
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
+            Explorar Menú
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </a>
 
           <a
             href="#contact"
-            className="px-8 py-4 rounded-lg bg-white/15 text-white font-bold text-base md:text-lg backdrop-blur-md border border-white/30 hover:bg-white/25 hover:border-white/50 hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-white/20 text-white font-bold text-base backdrop-blur-md border border-white/40 hover:bg-white/30 hover:border-white/60 hover:-translate-y-0.5 transition-all duration-300 drop-shadow-lg"
           >
             Realizar Pedido
           </a>
         </div>
 
         {/* Scroll indicator */}
-        <div className="flex justify-center pt-8">
-          <div className="animate-bounce">
-            <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
+        <div className="flex justify-center pt-6 animate-bounce">
+          <svg className="w-6 h-6 text-primary drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </div>
     </section>
