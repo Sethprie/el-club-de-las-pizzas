@@ -2,6 +2,7 @@
 
 import { MessageCircle, CreditCard, Copy } from 'lucide-react';
 import { useState } from 'react';
+import BackgroundPattern from './BackgroundPattern';
 
 export default function Contact() {
   const whatsappMessage = encodeURIComponent('¡Hola! Quisiera hacer un pedido de pizza');
@@ -23,8 +24,9 @@ Javier Prieto`;
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-gradient-to-b from-background to-card/30 border-t border-primary/10">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-b from-background to-card/30 border-t border-primary/10 overflow-hidden">
+      <BackgroundPattern />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="mb-16">
           <div className="inline-flex items-center gap-2 mb-4">

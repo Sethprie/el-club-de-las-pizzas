@@ -1,6 +1,7 @@
 'use client';
 
 import PizzaCard from './PizzaCard';
+import BackgroundPattern from './BackgroundPattern';
 import { ChefHat, Crown, Star } from 'lucide-react';
 
 interface Pizza {
@@ -208,8 +209,9 @@ export default function MenuGrid() {
   }, {} as Record<string, Pizza[]>);
 
   return (
-    <section id="menu" className="py-20 md:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section id="menu" className="relative py-20 md:py-32 bg-background overflow-hidden">
+      <BackgroundPattern />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="mb-16">
           <div className="inline-flex items-center gap-2 mb-4">

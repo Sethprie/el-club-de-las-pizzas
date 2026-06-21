@@ -1,14 +1,16 @@
 'use client';
 
 import { MapPin, Phone, Clock } from 'lucide-react';
+import BackgroundPattern from './BackgroundPattern';
 
 export default function Location() {
   const googleMapsUrl =
     'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d490.2868043296034!2d-71.6420827414377!3d10.5561169810753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDMzJzIxLjkiTiA3McKwMzgnMzEuMCJX!5e0!3m2!1ses-419!2sve!4v1769553310383!5m2!1ses-419!2sve';
 
   return (
-    <section id="location" className="py-20 md:py-32 bg-gradient-to-b from-background via-card/20 to-background border-b border-primary/10">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section id="location" className="relative py-20 md:py-32 bg-gradient-to-b from-background via-card/20 to-background border-b border-primary/10 overflow-hidden">
+      <BackgroundPattern />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
