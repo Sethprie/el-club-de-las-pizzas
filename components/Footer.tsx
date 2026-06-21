@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground/95 border-t border-border py-16 md:py-20 text-white">
+    <footer className="bg-gradient-to-b from-foreground/98 to-foreground border-t border-primary/20 py-16 md:py-24 text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* ===== GRID DE ESCRITORIO ===== */}
         <div className="hidden md:grid md:grid-cols-3 gap-12 md:gap-8 mb-12">
@@ -112,18 +112,18 @@ export default function Footer() {
         </div>
 
         {/* ===== COPYRIGHT ===== */}
-        <div className="border-t border-border pt-8 md:pt-12">
+        <div className="border-t border-white/20 pt-8 md:pt-12">
           <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 text-center md:text-left">
-            <p className="text-xs text-muted-foreground">
-              &copy; {currentYear} El Club de las Pizzas. Todos los derechos reservados.
+            <p className="text-xs text-white/70">
+              &copy; {currentYear} El Club de las Pizzas. Todos los derechos reservados. | Hecho con ❤️ en Zulia, Venezuela
             </p>
             <a
               href="https://sysmarch.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-primary hover:text-white transition-colors font-medium"
+              className="text-xs text-white/80 hover:text-primary transition-colors font-medium"
             >
-              ¿Quieres una web como esta para tu negocio? ¡Contáctanos ya en sysmarch.com!
+              Diseño y desarrollo web profesional
             </a>
           </div>
         </div>
